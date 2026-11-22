@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your Name | Architecture portfolio</title>
+  <meta name="description" content="Architecture portfolio: projects, films, models and writing.">
+  <meta name="theme-color" content="#ff2e93">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23ff2e93'/%3E%3Cpath d='M8 10h16M8 16h16M8 22h16' stroke='%23000' stroke-width='3'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Orbitron:wght@400;800&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script type="importmap">
+    { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+                   "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/" } }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#work">Skip to work</a>
+
+  <!-- The pink strip: menu button + initials -->
+  <header class="strip">
+    <button type="button" class="burger" id="openMenu" aria-label="Open menu" aria-haspopup="dialog">
+      <span></span><span></span><span></span>
+    </button>
+    <a class="initials" href="#" id="initials" aria-label="Back to the top"></a>
+  </header>
+
+  <main>
+    <section class="room" id="room" aria-labelledby="hero-name">
+      <h1 class="page-title" id="hero-name" data-name></h1>
+      <div class="stage" id="stage"></div>
+      <button type="button" class="pill-btn room-toggle" id="roomToggle" hidden>Enter the room</button>
+      <nav class="scene-nav" id="sceneNav" aria-label="Scenes in the room" hidden></nav>
+      <div class="room-foot">
+        <p class="room-hint" id="roomHint"></p>
+        <p class="statement" data-statement></p>
+        <ul class="cells cells-3 facts-row">
+          <li><span class="k">Role</span><span data-role></span></li>
+          <li><span class="k">Status</span><span data-availability></span></li>
+          <li><span class="k">Based in</span><span data-location></span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="band" id="work" aria-labelledby="work-h">
+      <h2 class="section-title" id="work-h">Work</h2>
+      <div class="cells filters" role="group" aria-label="Filter projects"></div>
+      <ol class="grid" id="grid"></ol>
+      <p class="empty" id="empty" hidden>No projects match this filter yet. Choose Everything to see all work.</p>
+    </section>
+
+    <section class="band band-grey" id="writing" aria-labelledby="writing-h">
+      <h2 class="section-title" id="writing-h">Writing</h2>
+      <ul class="essays" id="essays"></ul>
+    </section>
+
+    <section class="band" id="about" aria-labelledby="about-h">
+      <h2 class="section-title" id="about-h">About</h2>
+      <div class="about-cols">
+        <img class="portrait" id="portrait" alt="Portrait">
+        <div class="about-text" id="aboutText"></div>
+      </div>
+      <h3 class="sub-title">Experience and education</h3>
+      <ul class="cv-table" id="experience"></ul>
+      <h3 class="sub-title">Tools</h3>
+      <p class="skills" id="skills"></p>
+      <a class="pill-btn" id="cvLink" href="#" download>Download CV (PDF)</a>
+    </section>
+  </main>
+
+  <footer class="contact" id="contact" aria-labelledby="contact-h">
+    <h2 class="section-title" id="contact-h">Contact</h2>
+    <a class="email" id="email" href="#"></a>
+    <div class="contact-row">
+      <button type="button" class="pill-btn dark" id="copyEmail">Copy email address</button>
+      <ul class="links" id="links"></ul>
+    </div>
+    <p class="fine"><span data-name></span>, <span data-location></span>, <span id="year"></span></p>
+  </footer>
+
+  <!-- Full-screen menu -->
+  <dialog class="menu" id="menu" aria-label="Menu">
+    <button type="button" class="menu-close" id="closeMenu"><span class="x" aria-hidden="true">✕</span> <span data-name></span></button>
+    <form class="search" id="search" role="search">
+      <label class="sr" for="q">Search projects and writing</label>
+      <input id="q" type="search" placeholder="Search, for example ‘bathhouse’" autocomplete="off">
+      <button type="submit" aria-label="Search"><svg viewBox="0 0 24 24" width="34" height="34" aria-hidden="true"><path d="M3 12h16M13 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.4"/></svg></button>
+    </form>
+    <div id="menuLists"></div>
+    <p class="empty" id="menuEmpty" hidden>Nothing matches that search. Try a project name, a place or a year.</p>
+  </dialog>
+
+  <!-- Project and essay viewer -->
+  <dialog class="viewer" id="viewer" aria-labelledby="v-title">
+    <div class="viewer-bar">
+      <button type="button" class="menu-close" id="close"><span class="x" aria-hidden="true">✕</span> <span>Close</span></button>
+    </div>
+    <article class="viewer-body" id="viewerBody"></article>
+  </dialog>
+
+  <p class="toast" id="toast" role="status" aria-live="polite"></p>
+
+  <script src="js/content.js"></script>
+  <script src="js/story-projects.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
